@@ -76,9 +76,23 @@ A)select empno,ename, sal,sal*1.15
 from emp
 
 18) Display employee names and corresponding manager names
-A)
+A)SELECT e1.ename AS employee_name,
+       (SELECT e2.ename
+        FROM emp e2
+        WHERE e2.empno = e1.mgr) AS manager_name
+FROM emp e1;
+
 19) Display all the departments where employee salary greater than average salary of that
 department.
+A)SELECT DISTINCT d.deptno, d.dname, d.loc
+FROM dept d
+NATURAL JOIN emp e
+WHERE e.sal > (
+    SELECT AVG(e1.sal)
+    FROM emp e1
+    WHERE e1.deptno = e.deptno
+);
+
 20) Display employees where length of ename is 5
 21) Display all employees where ename start with J and ends with S
 22) Display all employees where employee does not belong to 10,20,40
