@@ -32,6 +32,9 @@ from emp
 order by deptno asc,sal desc;
 
 8) Display all employees those who were joined in year 1981.
+A)select *
+from emp
+where hiredate between '31-dec-1980'and '01-jan-1982'
 
 9) Display employee information who don’
 
@@ -58,10 +61,22 @@ from emp;
 
 15) Write a query that displays the employee’s names with the first letter capitalized and all other
 letters lowercase for all employees whose name starts with J, A, or M.
+A)SELECT INITCAP(ename)
+FROM emp
+WHERE ename LIKE 'J%' OR ename LIKE 'A%' OR ename LIKE 'M%';
+
 16) Write a query to display the employee name, department name of all employees who earn a
 commission.
+A)SELECT ename , dname
+FROM emp NATURAL JOIN dept 
+WHERE comm IS NOT NULL;
+
 17) Display the empno, ename, sal, and salary increased by 15%.
+A)select empno,ename, sal,sal*1.15
+from emp
+
 18) Display employee names and corresponding manager names
+A)
 19) Display all the departments where employee salary greater than average salary of that
 department.
 20) Display employees where length of ename is 5
